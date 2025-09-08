@@ -1,47 +1,36 @@
 <?php
-<?php
 include("banco.php");
+include("header.php");
 
-// Processa o formulário
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST["nome"];
-    $tipo = $_POST["tipo"];
-    $link = $_POST["link"];
-    $imagem = $_POST["imagem"]; // URL da imagem
-
-    $stmt = $conexao->prepare("INSERT INTO games (nome, tipo, link, imagem) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $nome, $tipo, $link, $imagem);
-    $stmt->execute();
-    $stmt->close();
-}
-
-// Formulário para cadastro
-echo '<form method="post" style="margin-bottom:30px;">
-    <label>Nome do Jogo:</label><br>
-    <input type="text" name="nome" required><br>
-    <label>Tipo:</label><br>
-    <input type="text" name="tipo" required><br>
-    <label>Link do Jogo:</label><br>
-    <input type="url" name="link" required><br>
-    <label>URL da Imagem:</label><br>
-    <input type="url" name="imagem" required><br>
-    <button type="submit">Cadastrar</button>
-</form>';
-
-// Exibe os jogos cadastrados
 $sql = "SELECT * FROM games ORDER BY nome";
-$result = $conexao->query($sql);
+$sql = $conexao->query($sql);
+?>
 
-while ($linha = $result->fetch_assoc()) {
+<h2>Jogos Disponíveis</h2>
+
+<a href="cadastro_jogos.php" class="btn btn-primary mb-4">Cadastrar Novo Jogo</a>
+
+<div class="row">
+<?php
+while ($linha = $sql->fetch_assoc()) {
     $nome = htmlspecialchars($linha["nome"]);
     $tipo = htmlspecialchars($linha["tipo"]);
     $link = htmlspecialchars($linha["link"]);
     $imagem = htmlspecialchars($linha["imagem"]);
-    echo "<div style='margin:20px; border:1px solid #ccc; padding:10px;'>
-            <img src='$imagem' alt='$nome' style='width:120px;'><br>
-            <strong>$nome</strong><br>
-            Tipo: $tipo<br>
-            Link: <a href='$link' target='_blank'>$link</a>
-          </div>";
+
+    echo "
+    <div class='col-md-4'>
+      <div class='card mb-3'>
+        <img src='$imagem' class='card-img-top' alt='$nome'>
+        <div class='card-body'>
+          <h5 class='card-title'>$nome</h5>
+          <p class='card-text'>Tipo: $tipo</p>
+          <a href='$link' target='_blank' class='btn btn-primary'>Jogar</a>
+        </div>
+      </div>
+    </div>";
 }
 ?>
+</div>
+
+<?php include("footer.php"); ?>
