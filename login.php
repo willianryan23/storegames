@@ -12,7 +12,7 @@ echo "<h2>Login</h2>
     <label for='senha' class='form-label'>Senha:</label>
     <input type='password' name='senha' class='form-control' required>
   </div>
-  <button type='submit' class='btn btn-primary'>Entrar</button>
+  <a type='submit' class='btn btn-primary' href='index.php'>Entrar</a>
 </form>";
 
 include 'footer.php';

@@ -5,14 +5,21 @@ include("banco.php");
 // Inclui o cabeçalho da página (HTML, menu, etc)
 include("header.php");
 
-// Verifica se o formulário foi enviado via método POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recebe os dados do formulário
+// insere as respostas do formulário no banco de dados
+
+if (isset($_POST['adicionar'])) { // Verifica se o formulário de adicionar foi enviado
     $nome = $_POST["nome"];
     $tipo = $_POST["tipo"];
     $link = $_POST["link"];
     $imagem = $_POST["imagem"];
-}
+
+    $sql_insert = "INSERT INTO games (nome, tipo, link, imagem) VALUES ('$nome', '$tipo', '$link', '$imagem')"; // Monta o comando SQL para inserir o produto
+    $conexao->query($sql_insert); // Executa o comando SQL no banco de dados
+
+    // Redireciona para index.php após o cadastro
+    header("Location: index.php");
+    exit;
+} 
 ?>
 
 <!-- Título da página -->
@@ -26,19 +33,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
   <div class="mb-3">
     <label class="form-label">Tipo:</label>
-    <input type="text" name="tipo" class="form-control" required>
+    <input type="text" id="tipo" name="tipo" class="form-control" required>
   </div>
   <div class="mb-3">
     <label class="form-label">Link do Jogo:</label>
-    <input type="url" name="link" class="form-control" required>
+    <input type="url" id="link" name="link" class="form-control" required>
   </div>
   <div class="mb-3">
     <label class="form-label">URL da Imagem:</label>
-    <input type="url" name="imagem" class="form-control" required>
+    <input type="url" id="imagem" name="imagem" class="form-control" required>
   </div>
   
 
-  <button type="submit" class="btn btn-success">Cadastrar</button>
+        <button type="submit" name="adicionar">Adicionar</button>
 </form>
 
 <?php

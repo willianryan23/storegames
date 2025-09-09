@@ -1,4 +1,3 @@
-
 <?php
 
 $servidor = "localhost"; //servidor do banco de dados 127
