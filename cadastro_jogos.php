@@ -55,7 +55,7 @@ if (isset($_POST['adicionar'])) {
       <option value="Estratégia">Estratégia</option>
       <option value="Simulação">Simulação</option>
       <option value="Corrida">Corrida</option>
-      <option value="Terror">Corrida infinita</option>
+      <option value="corrida infinita">Corrida infinita</option>
       <option value="Tiro">Tiro</option>
       <option value="Luta">Luta</option>
       <option value="Plataforma">Plataforma</option>

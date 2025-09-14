@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <option value="Estratégia" <?php echo ($jogo['tipo'] == 'Estratégia') ? 'selected' : ''; ?>>Estratégia</option>
         <option value="Simulação" <?php echo ($jogo['tipo'] == 'Simulação') ? 'selected' : ''; ?>>Simulação</option>
         <option value="Corrida" <?php echo ($jogo['tipo'] == 'Corrida') ? 'selected' : ''; ?>>Corrida</option>
-        <option value="Terror" <?php echo ($jogo['tipo'] == 'Terror') ? 'selected' : ''; ?>>Terror</option>
+        <option value="Corrida infinita" <?php echo ($jogo['tipo'] == 'Corrida infinita') ? 'selected' : ''; ?>>corrida infinita</option>
         <option value="Tiro" <?php echo ($jogo['tipo'] == 'Tiro') ? 'selected' : ''; ?>>Tiro</option>
         <option value="Luta" <?php echo ($jogo['tipo'] == 'Luta') ? 'selected' : ''; ?>>Luta</option>
         <option value="Plataforma" <?php echo ($jogo['tipo'] == 'Plataforma') ? 'selected' : ''; ?>>Plataforma</option>
