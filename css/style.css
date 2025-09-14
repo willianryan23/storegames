@@ -1,0 +1,103 @@
+.navbar-custom {
+    background-color: #171a4a !important; /* Azul escuro */
+}
+
+/* Estiliza o botão de pesquisar */
+.btn-pesquisar {
+    background-color: #510b60ff !important; /* Roxo escuro */
+    color: #fff !important;                 /* Texto branco */
+    border: none;                           /* Sem borda */
+}
+/* Mantém a cor ao passar o mouse no botão pesquisar */
+.btn-pesquisar:hover {
+    background-color: #510b60ff  !important;
+    color: #fff !important;
+}
+
+/* Repete a definição da cor da navbar (pode remover, pois já foi definido acima) */
+.navbar-custom {
+    background-color: #171a4a !important;
+}
+
+/* Estiliza o rodapé para ocupar toda a largura e cor igual à navbar */
+.footer-custom {
+    background-color: #171a4a !important; /* Azul escuro */
+    color: #fff !important;               /* Texto branco */
+    padding: 20px 0;                      /* Espaçamento vertical */
+    text-align: center;                   /* Centraliza o texto */
+}
+
+/* Estiliza o botão "Cadastrar Novo Jogo" */
+.btn-cadastrar {
+    background-color: #171a4a !important; /* Azul escuro */
+    color: #fff !important;               /* Texto branco */
+    border: none;                         /* Sem borda */
+}
+/* Muda a cor ao passar o mouse no botão cadastrar */
+.btn-cadastrar:hover {
+    background-color: #23265c !important; /* Azul um pouco mais claro */
+    color: #fff !important;
+}
+
+/* Estiliza o botão "Jogar" */
+.btn-jogar {
+    background-color: #2a2e7a !important; /* Azul mais claro que o cadastrar */
+    color: #fff !important;
+    border: none;
+}
+/* Muda a cor ao passar o mouse no botão jogar */
+.btn-jogar:hover {
+    background-color: #3a3e9a !important; /* Azul ainda mais claro */
+    color: #fff !important;
+}
+
+/* Estiliza o botão "editar" */
+.btn-editar {
+    background-color: #f2ff00 !important; /* Azul mais claro que o cadastrar */
+    color: #fff !important;
+    border: none;
+}
+/* Muda a cor ao passar o mouse no botão editar */
+.btn-editar:hover {
+    background-color: #f7ff5c !important; 
+    color: #fff !important;
+}
+
+/* Estiliza o botão "Apagar" (igual ao pesquisar) */
+.btn-apagar {
+    background-color: red !important; /* Vermelho */
+    color: #fff !important;
+    border: none;
+}
+/* Mantém a cor ao passar o mouse no botão apagar */
+.btn-apagar:hover {
+    background-color: rgb(255, 0, 0)  !important;
+    color: #fff !important;
+}
+
+/* Estiliza o botão "Adicionar" (usado em formulários) */
+.btn-adicionar {
+    background-color: #2a2e7a !important; /* Azul mais claro */
+    color: #fff !important;
+    border: none;
+}
+/* Muda a cor ao passar o mouse no botão adicionar */
+.btn-adionar:hover { /* ATENÇÃO: Está escrito "btn-adionar", o correto seria "btn-adicionar" */
+    background-color: #3a3e9a !important;
+    color: #fff !important;
+}
+
+/* Estiliza o botão "Entrar" (login) */
+.btn-entrar {
+    background-color: #2a2e7a !important; /* Azul mais claro */
+    color: #fff !important;
+    border: none;
+}
+/* Muda a cor ao passar o mouse no botão entrar */
+.btn-entrar:hover {
+    background-color: #3a3e9a !important;
+    color: #fff !important;
+}
+
+
+
