@@ -16,7 +16,7 @@
   <nav class="navbar navbar-custom border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
       <!-- Logo e nome do site, clicável para a página inicial -->
-      <a class="navbar-brand" href="/sitejogos/index.php">StoreGames</a>
+      <a class="navbar-brand" href="index.php">StoreGames</a>
       <!-- Botão para abrir/fechar o menu em telas pequenas -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

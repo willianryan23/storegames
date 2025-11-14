@@ -4,6 +4,7 @@ include("banco.php");
 
 // Verifica se o ID do jogo foi passado
 if (isset($_GET['id'])) {
+  // Obtém o ID do jogo e garante que seja um número inteiro
     $id = intval($_GET['id']);
     
     // Busca os dados do jogo usando prepared statement (CORREÇÃO)

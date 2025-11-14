@@ -14,11 +14,6 @@
     color: #fff !important;
 }
 
-/* Repete a definição da cor da navbar (pode remover, pois já foi definido acima) */
-.navbar-custom {
-    background-color: #171a4a !important;
-}
-
 /* Estiliza o rodapé para ocupar toda a largura e cor igual à navbar */
 .footer-custom {
     background-color: #171a4a !important; /* Azul escuro */
