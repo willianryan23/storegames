@@ -25,9 +25,24 @@ CREATE TABLE `categoria` (
   `nome` varchar(100) NOT NULL,
   `data_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Data for the table `categoria` */
+
+insert  into `categoria`(`id`,`nome`,`data_criacao`) values 
+(1,'Ação','2025-11-18 09:15:17'),
+(2,'Aventura','2025-11-18 09:15:17'),
+(3,'RPG','2025-11-18 09:15:17'),
+(4,'Esporte','2025-11-18 09:15:17'),
+(5,'Estratégia','2025-11-18 09:15:17'),
+(6,'Simulação','2025-11-18 09:15:17'),
+(7,'Corrida','2025-11-18 09:15:17'),
+(8,'Corrida infinita','2025-11-18 09:15:17'),
+(9,'Tiro','2025-11-18 09:15:17'),
+(10,'Luta','2025-11-18 09:15:17'),
+(11,'Plataforma','2025-11-18 09:15:17'),
+(12,'Puzzle','2025-11-18 09:15:17'),
+(13,'Multiplayer','2025-11-18 09:15:17');
 
 /*Table structure for table `clientes` */
 
@@ -55,20 +70,23 @@ CREATE TABLE `games` (
   `tipo` varchar(60) DEFAULT NULL,
   `link` varchar(5000) DEFAULT NULL,
   `imagem` varchar(5000) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `categoria_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_games_categoria` (`categoria_id`),
+  CONSTRAINT `fk_games_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Data for the table `games` */
 
-insert  into `games`(`id`,`nome`,`tipo`,`link`,`imagem`) values 
-(14,'Subway Surfers','Corrida infinita','https://poki.com/br/g/subway-surfers','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHmd7RaPdyvs4a2rn9LfLJieizT_pQ_n6fmz1Qyul-357d3OJMrXCscX50Ngw69sG9a5gkSLEoD_bzh47X5CBsh9upN_KDNoAjLhgu_uIJhw'),
-(15,'minecraft','Aventura','https://www.crazygames.com.br/jogos/bloxdhop-io','https://image.api.playstation.com/vulcan/ap/rnd/202407/0401/670c294ded3baf4fa11068db2ec6758c63f7daeb266a35a1.png'),
-(16,'grand prix hero','Corrida','https://poki.com/br/g/grand-prix-hero','https://play-lh.googleusercontent.com/IVB78hI6Rfc64vPWt5pJprHlYtjiJO5AnnvrZGyySkUsRgG7kRchOkbM8QEl7KRLB80'),
-(17,'blocky blast puzzle','Puzzle','https://poki.com/br/g/blocky-blast-puzzle','https://m.media-amazon.com/images/I/71Swtbq5uUL.png'),
-(19,'cryzen ','Tiro','https://poki.com/br/g/cryzen-io','https://cdn.jogos360.com.br/cr/yz/cryzen-io-d.jpg'),
-(20,'kirby amazing mirror','RPG','https://www.miniplay.com/game/kirby-and-the-amazing-mirror','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL3z27aksuR0FXwgetYEhrxNsz-H5AI3A-gQ&s'),
-(21,'sonic','RPG','https://www.miniplay.com/game/sonic-the-hedgehog-pocket-platformer','https://www2.minijuegosgratis.com/v3/games/thumbnails/205296_7_sq.jpg'),
-(27,'Subway Surfers','Aventura','https://poki.com/br/g/subway-surfers','https://sigaa.ufpi.br/sigaa/ufpi/portais/discente/discente.jsf');
+insert  into `games`(`id`,`nome`,`tipo`,`link`,`imagem`,`categoria_id`) values 
+(14,'Subway Surfers','Corrida infinita','https://poki.com/br/g/subway-surfers','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHmd7RaPdyvs4a2rn9LfLJieizT_pQ_n6fmz1Qyul-357d3OJMrXCscX50Ngw69sG9a5gkSLEoD_bzh47X5CBsh9upN_KDNoAjLhgu_uIJhw',8),
+(15,'minecraft','Aventura','https://www.crazygames.com.br/jogos/bloxdhop-io','https://image.api.playstation.com/vulcan/ap/rnd/202407/0401/670c294ded3baf4fa11068db2ec6758c63f7daeb266a35a1.png',2),
+(16,'grand prix hero','Corrida','https://poki.com/br/g/grand-prix-hero','https://play-lh.googleusercontent.com/IVB78hI6Rfc64vPWt5pJprHlYtjiJO5AnnvrZGyySkUsRgG7kRchOkbM8QEl7KRLB80',7),
+(17,'blocky blast puzzle','Puzzle','https://poki.com/br/g/blocky-blast-puzzle','https://m.media-amazon.com/images/I/71Swtbq5uUL.png',12),
+(19,'cryzen ','Tiro','https://poki.com/br/g/cryzen-io','https://cdn.jogos360.com.br/cr/yz/cryzen-io-d.jpg',9),
+(20,'kirby amazing mirror','RPG','https://www.miniplay.com/game/kirby-and-the-amazing-mirror','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL3z27aksuR0FXwgetYEhrxNsz-H5AI3A-gQ&s',3),
+(21,'sonic','RPG','https://www.miniplay.com/game/sonic-the-hedgehog-pocket-platformer','https://www2.minijuegosgratis.com/v3/games/thumbnails/205296_7_sq.jpg',3),
+(27,'Subway Surfers','Aventura','https://poki.com/br/g/subway-surfers','https://sigaa.ufpi.br/sigaa/ufpi/portais/discente/discente.jsf',8);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
