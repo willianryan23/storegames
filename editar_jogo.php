@@ -8,9 +8,10 @@ if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
     
     // Busca os dados do jogo usando prepared statement (CORREÇÃO)
-    $sql = "SELECT * FROM games WHERE id = ?";
+    $categoria_id = $_POST['categoria_id'];
+    $sql = "UPDATE games SET nome=?, tipo=?, link=?, imagem=?, categoria_id=? WHERE id=?";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("i", $id);
+    $stmt->bind_param("ssssii", $nome, $tipo, $link, $imagem, $categoria_id, $id);
     $stmt->execute();
     $resultado = $stmt->get_result();
     
@@ -69,24 +70,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     
     <div class="mb-3">
-      <label class="form-label">Tipo:</label>
-      <select id="tipo" name="tipo" class="form-control" required>
-        <option value="">Selecione o tipo</option>
-        <option value="Ação" <?php echo ($jogo['tipo'] == 'Ação') ? 'selected' : ''; ?>>Ação</option>
-        <option value="Aventura" <?php echo ($jogo['tipo'] == 'Aventura') ? 'selected' : ''; ?>>Aventura</option>
-        <option value="RPG" <?php echo ($jogo['tipo'] == 'RPG') ? 'selected' : ''; ?>>RPG</option>
-        <option value="Esporte" <?php echo ($jogo['tipo'] == 'Esporte') ? 'selected' : ''; ?>>Esporte</option>
-        <option value="Estratégia" <?php echo ($jogo['tipo'] == 'Estratégia') ? 'selected' : ''; ?>>Estratégia</option>
-        <option value="Simulação" <?php echo ($jogo['tipo'] == 'Simulação') ? 'selected' : ''; ?>>Simulação</option>
-        <option value="Corrida" <?php echo ($jogo['tipo'] == 'Corrida') ? 'selected' : ''; ?>>Corrida</option>
-        <option value="Corrida infinita" <?php echo ($jogo['tipo'] == 'Corrida infinita') ? 'selected' : ''; ?>>corrida infinita</option>
-        <option value="Tiro" <?php echo ($jogo['tipo'] == 'Tiro') ? 'selected' : ''; ?>>Tiro</option>
-        <option value="Luta" <?php echo ($jogo['tipo'] == 'Luta') ? 'selected' : ''; ?>>Luta</option>
-        <option value="Plataforma" <?php echo ($jogo['tipo'] == 'Plataforma') ? 'selected' : ''; ?>>Plataforma</option>
-        <option value="Puzzle" <?php echo ($jogo['tipo'] == 'Puzzle') ? 'selected' : ''; ?>>Puzzle</option>
-        <option value="Multiplayer" <?php echo ($jogo['tipo'] == 'Multiplayer') ? 'selected' : ''; ?>>Multiplayer</option>
-        <!-- CORREÇÃO: Removida a opção duplicada "Corrida infinita" com valor "Terror" -->
-        <option value="Corrida infinita" <?php echo ($jogo['tipo'] == 'Corrida infinita') ? 'selected' : ''; ?>>Corrida infinita</option>
+      <label class="form-label">Categoria:</label>
+      <select id="categoria_id" name="categoria_id" class="form-control" required>
+        <option value="">Selecione a categoria</option>
+        <?php
+        $sql_categorias = "SELECT * FROM categoria ORDER BY nome";
+        $result_categorias = $conexao->query($sql_categorias);
+        while ($categoria = $result_categorias->fetch_assoc()) {
+          $selected = ($categoria['id'] == $jogo['categoria_id']) ? 'selected' : '';
+          echo "<option value='{$categoria['id']}' $selected>{$categoria['nome']}</option>";
+        }
+        ?>
       </select>
     </div>
     

@@ -16,7 +16,10 @@ if (isset($_GET['apagar'])) { // Verifica se existe o parâmetro 'apagar' na URL
 }
 
 // Consulta todos os jogos cadastrados, ordenando pelo nome
-$sql = "SELECT * FROM games ORDER BY nome";
+$sql = "SELECT g.*, c.nome as categoria_nome 
+        FROM games g 
+        LEFT JOIN categoria c ON g.categoria_id = c.id 
+        ORDER BY g.nome";
 $sql = $conexao->query($sql); // Executa a consulta e armazena o resultado
 ?>
 
@@ -38,6 +41,7 @@ if ($sql->num_rows == 0) {
         $tipo = htmlspecialchars($linha["tipo"]); // Tipo do jogo (escapado)
         $link = htmlspecialchars($linha["link"]); // Link do jogo (escapado)
         $imagem = htmlspecialchars($linha["imagem"]); // URL da imagem (escapado)
+        $categoria_nome = htmlspecialchars($linha["categoria_nome"]);
 
         // Exibe o card do jogo com imagem, nome, tipo, botão para jogar, editar e apagar
         echo "
@@ -46,7 +50,7 @@ if ($sql->num_rows == 0) {
             <img src='$imagem' class='card-img-top' alt='$nome' style='width: 300px;  height: 275px; object-fit: cover; margin: auto;'>
             <div class='card-body'>
               <h5 class='card-title'>$nome</h5>
-              <p class='card-text'>Tipo: $tipo</p>
+          <p class='card-text'>Tipo: $tipo<br>Categoria: $categoria_nome</p>
               <div class='d-flex justify-content-between'>
               <div>
                   <a href='$link' target='_blank' class='btn btn-jogar'>Jogar</a>

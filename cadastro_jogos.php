@@ -25,7 +25,8 @@ if (isset($_POST['adicionar'])) {
     $imagem = $_POST["imagem"];  // URL da imagem do jogo
 
     // Monta o comando SQL para inserir o jogo no banco de dados
-    $sql_insert = "INSERT INTO games (nome, tipo, link, imagem) VALUES ('$nome', '$tipo', '$link', '$imagem')";
+    $categoria_id = $_POST["categoria_id"];
+    $sql_insert = "INSERT INTO games (nome, tipo, link, imagem, categoria_id) VALUES ('$nome', '$tipo', '$link', '$imagem', '$categoria_id')";
     // Executa o comando SQL no banco de dados
     $conexao->query($sql_insert);
 
@@ -45,23 +46,17 @@ if (isset($_POST['adicionar'])) {
     <input type="text" id="nome" name="nome" class="form-control" required>
   </div>
   <div class="mb-3">
-    <label class="form-label">Tipo:</label>
-    <select type="text" id="tipo" name="tipo" class="form-control" required>
-      <option value="">Selecione o tipo</option>
-      <option value="Ação">Ação</option>
-      <option value="Aventura">Aventura</option>
-      <option value="RPG">RPG</option>
-      <option value="Esporte">Esporte</option>
-      <option value="Estratégia">Estratégia</option>
-      <option value="Simulação">Simulação</option>
-      <option value="Corrida">Corrida</option>
-      <option value="corrida infinita">Corrida infinita</option>
-      <option value="Tiro">Tiro</option>
-      <option value="Luta">Luta</option>
-      <option value="Plataforma">Plataforma</option>
-      <option value="Puzzle">Puzzle</option>
-      <option value="Multiplayer">Multiplayer</option>
-      </select>
+    <label class="form-label">Categoria:</label>
+    <select id="categoria_id" name="categoria_id" class="form-control" required>
+      <option value="">Selecione a categoria</option>
+      <?php
+      $sql_categorias = "SELECT * FROM categoria ORDER BY nome";
+      $result_categorias = $conexao->query($sql_categorias);
+      while ($categoria = $result_categorias->fetch_assoc()) {
+        echo "<option value='{$categoria['id']}'>{$categoria['nome']}</option>";
+      }
+      ?>
+    </select>
   </div>
   <div class="mb-3">
     <label class="form-label">Link do Jogo:</label>

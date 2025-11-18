@@ -16,6 +16,19 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`storegames` /*!40100 DEFAULT CHARACTER 
 
 USE `storegames`;
 
+/*Table structure for table `categoria` */
+
+DROP TABLE IF EXISTS `categoria`;
+
+CREATE TABLE `categoria` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `data_criacao` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+/*Data for the table `categoria` */
+
 /*Table structure for table `clientes` */
 
 DROP TABLE IF EXISTS `clientes`;
@@ -43,7 +56,7 @@ CREATE TABLE `games` (
   `link` varchar(5000) DEFAULT NULL,
   `imagem` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Data for the table `games` */
 
@@ -54,7 +67,8 @@ insert  into `games`(`id`,`nome`,`tipo`,`link`,`imagem`) values
 (17,'blocky blast puzzle','Puzzle','https://poki.com/br/g/blocky-blast-puzzle','https://m.media-amazon.com/images/I/71Swtbq5uUL.png'),
 (19,'cryzen ','Tiro','https://poki.com/br/g/cryzen-io','https://cdn.jogos360.com.br/cr/yz/cryzen-io-d.jpg'),
 (20,'kirby amazing mirror','RPG','https://www.miniplay.com/game/kirby-and-the-amazing-mirror','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL3z27aksuR0FXwgetYEhrxNsz-H5AI3A-gQ&s'),
-(21,'sonic','RPG','https://www.miniplay.com/game/sonic-the-hedgehog-pocket-platformer','https://www2.minijuegosgratis.com/v3/games/thumbnails/205296_7_sq.jpg');
+(21,'sonic','RPG','https://www.miniplay.com/game/sonic-the-hedgehog-pocket-platformer','https://www2.minijuegosgratis.com/v3/games/thumbnails/205296_7_sq.jpg'),
+(27,'Subway Surfers','Aventura','https://poki.com/br/g/subway-surfers','https://sigaa.ufpi.br/sigaa/ufpi/portais/discente/discente.jsf');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

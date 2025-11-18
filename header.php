@@ -26,6 +26,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="login.php">Login</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Início</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="filtrar_por_categoria.php">Filtrar por Categoria</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="cadastro_jogos.php">Cadastrar jogo</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="sobre_nos.php">Sobre nós</a></li>
         </ul>

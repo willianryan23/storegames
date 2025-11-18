@@ -34,7 +34,12 @@ if (strlen($jogo) < 3) {
 include "banco.php";
 
 // Monta a consulta SQL para buscar jogos pelo nome ou tipo, usando LIKE para busca parcial
-$sql = "SELECT * FROM games WHERE nome LIKE '%$jogo%' OR tipo LIKE '%$jogo%' ORDER BY nome";
+// Busca por nome, tipo OU categoria (usando JOIN)
+$sql = "SELECT g.*, c.nome as categoria_nome 
+        FROM games g 
+        LEFT JOIN categoria c ON g.categoria_id = c.id 
+        WHERE g.nome LIKE '%$jogo%' OR g.tipo LIKE '%$jogo%' OR c.nome LIKE '%$jogo%' 
+        ORDER BY g.nome";
 // Executa a consulta
 $result = $conexao->query($sql);
 // Conta quantos registros foram encontrados
@@ -52,6 +57,8 @@ if ($contador == 0) {
         $tipo = htmlspecialchars($linha['tipo']); // Tipo do jogo (escapado)
         $link = htmlspecialchars($linha['link']); // Link do jogo (escapado)
         $imagem = htmlspecialchars($linha['imagem']); // URL da imagem (escapado)
+        $tipo = htmlspecialchars($linha['tipo']);
+        $categoria_nome = htmlspecialchars($linha['categoria_nome']);
 
         // Exibe o card do jogo com imagem, nome, tipo e botão para jogar
         echo "
@@ -60,7 +67,7 @@ if ($contador == 0) {
             <img src='$imagem' class='card-img-top' alt='$nome'>
             <div class='card-body'>
               <h5 class='card-title'>$nome</h5>
-              <p class='card-text'>Tipo: $tipo</p>
+              <p class='card-text'>Tipo: $tipo<br>Categoria: $categoria_nome</p>
               <a href='$link' target='_blank' class='btn btn-primary'>Jogar</a>
             </div>
           </div>
